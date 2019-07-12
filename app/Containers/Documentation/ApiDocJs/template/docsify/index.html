@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="Description">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="./css/vue.css">
+    <style>
+        .markdown-section {
+            max-width: 90%;
+        }
+
+        .markdown-section table {
+            display: table;
+        }
+
+        .test .response {
+            display: none;
+        }
+
+        .test form div {
+            padding: 10px 15px
+        }
+
+        .test form div label {
+            display: inline-block;
+            width: 100px
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+    window.$docsify = {
+        name: '接口文档',
+        repo: '',
+        // maxLevel: 2,
+        // copyCode: {
+        //     buttonText: '复制',
+        //     errorText: '复制失败',
+        //     successText: '复制成功',
+        // },
+        loadSidebar: true,
+        subMaxLevel: 2,
+        search: {
+            placeholder: '搜索...',
+            noData: '无匹配数据',
+        },
+
+        plugins: [
+            // function (hook, vm) {
+            //     let btn = '<button>TEST</button>';
+            //
+            //
+            //     hook.afterEach(function (html) {
+            //         console.log(html)
+            //         return html.replace(/\[TEST\]/g, btn)
+            //     })
+            // }
+        ]
+    }
+</script>
+<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+<script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
+<script src="//unpkg.com/docsify-copy-code"></script>
+<script src="//unpkg.com/docsify/lib/plugins/emoji.min.js"></script>
+<script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+<script src="//unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(document).on("click", "button[id='submit']", function (event) {
+            event.preventDefault();
+            form = this.form;
+            $.ajax({
+                url: form.action,
+                type: form.method,
+                data: serializeNotNull($(form).serialize()),
+                dataType: 'json',
+                complete: function (XMLHttpRequest, textStatus) {
+                    $response = $(form).parent();
+                    $response.find('.response').show();
+                    //显示地址
+                    $response.find('.response-url code').html(this.url);
+                    //显示请求头
+                    // $form.find('.response-headers').JSONView(this.headers);
+                    //显示返回内容
+                    $response.find('.response-json code').html(JSON.stringify(XMLHttpRequest.responseJSON, null, 2));
+                    //显示返回code
+                    $response.find('.response-code').html(XMLHttpRequest.status);
+                    //显示返回header
+                    $response.find('.response-res-headers code').html(XMLHttpRequest.getAllResponseHeaders());
+                    if (window.Prism) {
+                        $response.find('code').each(function (index, elem) {
+                            Prism.highlightElement(elem)
+                        });
+                    }
+
+                }
+            })
+        })
+    })
+
+    function serializeNotNull(serStr) {
+        return serStr.split("&").filter(str => !str.endsWith("=")).join("&");
+    }
+</script>
+</body>
+</html>

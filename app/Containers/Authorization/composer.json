@@ -1,0 +1,7 @@
+{
+    "name": "api/authorization",
+    "description": "Authorization Container for api.",
+    "require": {
+        "spatie/laravel-permission": "^2.9"
+    }
+}

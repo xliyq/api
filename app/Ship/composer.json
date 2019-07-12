@@ -1,0 +1,29 @@
+{
+    "require": {
+        "porto/core": "@dev",
+        "sentry/sentry-laravel": "^1.1",
+        "liyq/laravel-notification-channel-jpush": "@dev",
+        "liyq/laravel-notification-channel-aliyunsms": "@dev"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "files": [
+            "Helpers/helper.php"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/core"
+        },
+        {
+            "type": "path",
+            "url": "packages/jpush"
+        },
+        {
+            "type": "path",
+            "url": "packages/aliyunsms"
+        }
+    ]
+}

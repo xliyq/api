@@ -1,0 +1,8 @@
+{
+    "name": "api/debugger",
+    "description": "Debugger Container for api.",
+    "require": {
+        "jenssegers/agent": "^2.4",
+        "barryvdh/laravel-debugbar": "3.*"
+    }
+}

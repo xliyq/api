@@ -1,0 +1,7 @@
+{
+  "name": "porto/authentication",
+  "description": "Authentication Container for api.",
+  "require": {
+    "laravel/passport": "~7.0"
+  }
+}

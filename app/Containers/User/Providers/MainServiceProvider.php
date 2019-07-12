@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Containers\User\Providers;
+
+use Porto\Core\Providers\Abstracts\CoreMainProvider;
+
+/**
+ * Class MainServiceProvider.
+ *
+ * The Main Service Provider of this container, it will be automatically registered in the framework.
+ */
+class MainServiceProvider extends CoreMainProvider
+{
+
+    /**
+     * Container Service Providers.
+     *
+     * @var array
+     */
+    public $serviceProviders = [
+        EventServiceProvider::class
+    ];
+
+    /**
+     * Container Aliases
+     *
+     * @var  array
+     */
+    public $aliases = [
+        // 'Foo' => Bar::class,
+    ];
+
+    /**
+     * Register anything in the container.
+     */
+    public function register() {
+        parent::register();
+
+        // $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        // ...
+    }
+}
