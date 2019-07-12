@@ -4,9 +4,9 @@
 namespace App\Containers\Authorization\Tests;
 
 
-use Porto\Core\Tests\PhpUnit\CoreTestCase;
+use App\Ship\Tests\PhpUnit\ShipTestCase;
 
-class TestCase extends CoreTestCase
+class TestCase extends ShipTestCase
 {
 
 }

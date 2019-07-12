@@ -5,9 +5,9 @@ namespace App\Containers\Tiku\Tests;
 
 use App\Containers\Tiku\Models\Title;
 use App\Containers\Tiku\Models\TitleOption;
-use Porto\Core\Tests\PhpUnit\CoreTestCase;
+use App\Ship\Tests\PhpUnit\ShipTestCase;
 
-class TestCase extends CoreTestCase
+class TestCase extends ShipTestCase
 {
     /**
      * 创建试题

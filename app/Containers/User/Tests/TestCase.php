@@ -3,10 +3,9 @@
 
 namespace App\Containers\User\Tests;
 
+use App\Ship\Tests\PhpUnit\ShipTestCase;
 
-use Porto\Core\Tests\PhpUnit\CoreTestCase;
-
-class TestCase extends CoreTestCase
+class TestCase extends ShipTestCase
 {
 
 }

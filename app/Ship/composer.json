@@ -3,7 +3,7 @@
         "porto/core": "@dev",
         "sentry/sentry-laravel": "^1.1",
         "liyq/laravel-notification-channel-jpush": "@dev",
-        "liyq/laravel-notification-channel-aliyunsms": "@dev"
+        "liyq/laravel-notification-channel-sms": "@dev"
     },
     "require-dev": {
     },
@@ -23,7 +23,7 @@
         },
         {
             "type": "path",
-            "url": "packages/aliyunsms"
+            "url": "packages/sms"
         }
     ]
 }
