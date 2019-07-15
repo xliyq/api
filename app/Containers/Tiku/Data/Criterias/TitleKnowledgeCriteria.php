@@ -24,11 +24,11 @@ class TitleKnowledgeCriteria extends CoreCriteria
      * @return mixed
      */
     public function apply($model, RepositoryInterface $repository) {
-        $model->whereHas('knowledge', function ($query) {
+        return $model->whereHas('knowledge', function ($query) {
             if (is_array($this->knowledge)) {
                 $query->whereIn('knowledge_id', $this->knowledge);
             } else if (is_numeric($this->knowledge)) {
-                $query->where('knowldge_id', $this->knowledge);
+                $query->where('knowledge_id', $this->knowledge);
             }
 
         });

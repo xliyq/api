@@ -7,6 +7,7 @@ namespace App\Containers\Tiku\Tasks;
 use App\Containers\Tiku\Data\Criterias\TitleAttrCriteria;
 use App\Containers\Tiku\Data\Criterias\TitleKnowledgeCriteria;
 use App\Containers\Tiku\Data\Repositories\TitleRepository;
+use Porto\Core\Criterias\Eloquent\ThisEqualThatCriteria;
 use Porto\Core\Tasks\CoreTask;
 
 class GetAllTitlesTask extends CoreTask
@@ -22,15 +23,16 @@ class GetAllTitlesTask extends CoreTask
     }
 
     /**
-     * 属性相关条件
+     * 属性表中的条件
      *
-     * @param array $attr
+     * @param array $attrs
      *
+     * @return void
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function attr(array $attr) {
-        if (!empty($attr)) {
-            $this->repository->pushCriteria(new TitleAttrCriteria($attr));
+    public function attr(array $attrs) {
+        if (!empty($attrs)) {
+            $this->repository->pushCriteria(new TitleAttrCriteria($attrs));
         }
     }
 

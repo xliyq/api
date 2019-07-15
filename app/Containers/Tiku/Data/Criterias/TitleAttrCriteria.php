@@ -29,13 +29,13 @@ class TitleAttrCriteria extends Criteria
      * @return mixed
      */
     public function apply($model, RepositoryInterface $repository) {
-        $table = $model->getModel()->getTable();
-        DB::table($table)
-            ->join('title_attr', function (JoinClause $join) use ($table) {
-                $join->on($table . 'id', '=', 'title_id')->where($this->attrs);
-            });
-//        $model->whereHas('attr', function ($query) {
-//            $query->where($this->attrs);
-//        });
+//        $table = $model->getModel()->getTable();
+//        return DB::table($table)
+//            ->join('title_attrs', function (JoinClause $join) use ($table) {
+//                $join->on($table . 'id', '=', 'title_id')->where($this->attrs);
+//            });
+        return $model->whereHas('attr', function ($query) {
+            $query->where($this->attrs);
+        });
     }
 }
