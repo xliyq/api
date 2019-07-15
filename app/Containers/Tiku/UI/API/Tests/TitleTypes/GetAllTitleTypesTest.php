@@ -28,8 +28,9 @@ class GetAllTitleTypesTest extends ApiTestCase
         $response = $this->makeCall($data);
 
         $response->assertStatus(200);
+        $count = TitleType::where($data)->count();
 
-        $response->assertJsonCount(4, 'data');
+        $response->assertJsonCount($count > 15 ? 15 : $count, 'data');
 
     }
 
