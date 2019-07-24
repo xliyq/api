@@ -2,7 +2,7 @@
 # 安装
 
 ### 服务器要求
-* php >= 7.1
+* php >= 7.2
 * phpunit >= 7.5
 * php扩展
     * OpenSSL PHP扩展
@@ -38,8 +38,13 @@
 ### OAuth 2.0 设置
 1. 通过`laravel/passport` 扩展包生成访问令牌
 ```bash
-    php artisan possport:install
+    php artisan passport:install
 ```
+2. 生成`oauth`秘钥文件
+```bash
+    php artisan passport:keys
+```
+
 
 ### 文档生成
 
@@ -47,5 +52,5 @@
 1. 确保本地安装`phpunit`版本大于等于 7.5
 2. 运行测试
 ```bash
-phpunit
+    vendor/bin/phpunit
 ```
