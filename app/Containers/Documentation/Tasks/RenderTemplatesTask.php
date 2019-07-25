@@ -5,6 +5,7 @@ namespace App\Containers\Documentation\Tasks;
 
 
 use App\Containers\Documentation\Traits\DocsGeneratorTrait;
+use Illuminate\Support\Facades\File;
 use Porto\Core\Tasks\CoreTask;
 use Illuminate\Support\Facades\Config;
 
@@ -30,8 +31,9 @@ class RenderTemplatesTask extends CoreTask
         $this->replace('{{pagination-limit}}', Config::get('repository.pagination.limit'));
 
         $path = public_path(self::OUTPUT_PATH . 'header.md');
-
-        mkdir(dirname($path), 0777, true);
+        if (!file_exists(dirname($path))) {
+            mkdir(dirname($path), 0777, true);
+        }
         file_put_contents($path, $this->headerMarkdownContent);
 
         return $path;
