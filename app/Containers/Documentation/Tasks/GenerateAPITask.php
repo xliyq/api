@@ -71,7 +71,7 @@ class GenerateAPITask extends CoreTask
             ->with('paths', $data)
             ->render();
 
-        copy(public_path('api-rendered-markdowns/header.md'), $path . '/header.md');
+        copy(public_path('api/rendered-markdowns/header.md'), $path . '/header.md');
 
         file_put_contents($path . "/_sidebar.md", $content);
     }
