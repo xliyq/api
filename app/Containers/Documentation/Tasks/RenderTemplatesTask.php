@@ -15,7 +15,7 @@ class RenderTemplatesTask extends CoreTask
     protected $headerMarkdownContent;
 
     const TEMPLATE_PATH = 'Containers/Documentation/ApiDocJs/shared/';
-    const OUTPUT_PATH = 'api-rendered-markdowns/';
+    const OUTPUT_PATH = 'api/rendered-markdowns/';
 
     public function run() {
         $this->headerMarkdownContent = file_get_contents(app_path(self::TEMPLATE_PATH . 'header.template.md'));
@@ -31,6 +31,7 @@ class RenderTemplatesTask extends CoreTask
 
         $path = public_path(self::OUTPUT_PATH . 'header.md');
 
+        mkdir(dirname($path), 0777, true);
         file_put_contents($path, $this->headerMarkdownContent);
 
         return $path;
