@@ -32,7 +32,7 @@ Route::group(['prefix' => 'users', 'middleware' => 'auth:api'], function () {
     /**
      * @apiGroup            Users
      * @apiName             根据ID更新用户
-     * @api                 {put} /v1/admins/:id 根据ID更新用户
+     * @api                 {put} /v1/users/:id 根据ID更新用户
      * @apiDescription      根据ID更新用户
      *
      * @apiPermission       Authenticated User
@@ -40,7 +40,7 @@ Route::group(['prefix' => 'users', 'middleware' => 'auth:api'], function () {
      * @apiParam            {String} password
      * @apiParam            {String} name
      */
-    Route::put('{id}', 'UserController@updateUser');
+    Route::patch('{id}', 'UserController@updateUser');
 
     /**
      * @apiGroup            Users
