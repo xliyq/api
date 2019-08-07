@@ -30,6 +30,6 @@ class ProxyRefreshForWebClientTest extends ApiTestCase
 
         $response->assertStatus(200);
         //包含token信息
-        $response->assertJsonStructure(['access_token', 'refresh_token']);
+        $response->assertJsonStructure(['data' => ['access_token', 'refresh_token']]);
     }
 }

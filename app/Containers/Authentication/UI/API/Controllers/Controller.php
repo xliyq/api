@@ -7,6 +7,7 @@ namespace App\Containers\Authentication\UI\API\Controllers;
 use App\Containers\Authentication\UI\API\Requests\LoginRequest;
 use App\Containers\Authentication\UI\API\Requests\LogoutRequest;
 use App\Containers\Authentication\UI\API\Requests\RefreshRequest;
+use App\Containers\Authentication\UI\API\Resource\LoginResource;
 use Illuminate\Support\Facades\Cookie;
 use Porto\Core\Dto\DataDto;
 use Porto\Core\Http\Controllers\ApiController;
@@ -33,7 +34,8 @@ class Controller extends ApiController
         ]));
         $result = Porto::call('Authentication@ProxyApiLoginAction', [$data]);
 
-        return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
+        return new LoginResource($result);
+//        return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
 
     public function proxyRefreshForWebClient(RefreshRequest $request) {
@@ -45,7 +47,8 @@ class Controller extends ApiController
 
         $result = Porto::call('Authentication@ProxyApiRefreshAction', [$data]);
 
-        return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
+        return new LoginResource($result);
+//        return $this->json($result['response_content'])->withCookie($result['refresh_cookie']);
     }
 
 }
